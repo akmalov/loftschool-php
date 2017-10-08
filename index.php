@@ -16,3 +16,11 @@ $feltPenDrawings = 23;
 $pencilDrawings = 40;
 $paintDrawings = $allDrawings - $feltPenDrawings - $pencilDrawings;
 print $paintDrawings."<br>\n";
+
+// Task №3 //
+
+define("CONSTANT", 0);
+if (defined("CONSTANT") == true) {
+    print CONSTANT;
+}
+CONSTANT = 1;
