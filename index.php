@@ -29,11 +29,31 @@ CONSTANT = 1;
 
 $age = rand(1, 120);
 if (($age > 17)&&($age < 66)) {
-    print "Вам ещё работать и работать";
+    print "Вам ещё работать и работать <br>\n";
 } elseif ($age > 65) {
-    print "Вам пора на пенсию";
+    print "Вам пора на пенсию <br>\n";
 } elseif ($age < 18) {
-    print "Вам ещё рано работать";
+    print "Вам ещё рано работать <br>\n";
 } else {
-    print "Неизвестный возраст";
+    print "Неизвестный возраст <br>\n";
+}
+
+// Task №5 //
+
+$day = rand(1, 7);
+switch ($day) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        print "Это рабочий день <br>\n";
+        break;
+    case 6:
+    case 7:
+        print "Это выходной день <br>\n";
+        break;
+    default:
+        print "Неизвестный день <br>\n";
+        break;
 }
