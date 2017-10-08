@@ -21,6 +21,19 @@ print $paintDrawings."<br>\n";
 
 define("CONSTANT", 0);
 if (defined("CONSTANT") == true) {
-    print CONSTANT;
+    print CONSTANT."<br>\n";
 }
 CONSTANT = 1;
+
+// Task №4 //
+
+$age = rand(1, 120);
+if (($age > 17)&&($age < 66)) {
+    print "Вам ещё работать и работать";
+} elseif ($age > 65) {
+    print "Вам пора на пенсию";
+} elseif ($age < 18) {
+    print "Вам ещё рано работать";
+} else {
+    print "Неизвестный возраст";
+}
