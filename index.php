@@ -1,1 +1,5 @@
-<?php print('Hello world'); ?>
+<?php require('functions.php');
+
+echo('Задание #1');
+task1(['один', 'два', 'три', 'четыре', 'пять']);
+echo(task1(['один', 'два', 'три', 'четыре', 'пять'], true));
