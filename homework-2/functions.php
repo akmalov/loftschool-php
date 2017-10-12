@@ -128,3 +128,9 @@ function task5($string)
         echo palindrome(false);
     }
 }
+function task6()
+{
+    echo date("j.n.Y H:i");
+    echo "<br>";
+    echo strtotime("24.02.2016 00:00:00");
+}
