@@ -74,3 +74,29 @@ function task3()
     $num = task2($array, $operation);
     return $num;
 }
+
+function task4($number1, $number2)
+{
+    $typeofNumber1 = gettype($number1);
+    $typeofNumber2 = gettype($number2);
+    if ($typeofNumber1 !== "integer" || $typeofNumber2 !== "integer") {
+        echo "Введите два целых числа.";
+        return null;
+    } elseif ($number1 <= 0 || $number2 <= 0) {
+        echo "Введите два целых числа больше нуля.";
+        return null;
+    }
+
+    echo "<table><tr>";
+
+    for ($i = 1; $i <= $number1; $i++) {
+        for ($j = 1; $j <= $number2; $j++) {
+            echo "<td>" . '&nbsp' . ($i * $j) . '&nbsp' . "</td>";
+        }
+        if ($i != $number1) {
+            echo "</tr><tr>";
+        }
+    }
+
+    echo "</tr></table>";
+}
