@@ -134,3 +134,9 @@ function task6()
     echo "<br>";
     echo strtotime("24.02.2016 00:00:00");
 }
+function task7($string1, $string2)
+{
+    echo str_replace("К", "", $string1);
+    echo "<br>";
+    echo str_replace("Две", "Три", $string2);
+}
