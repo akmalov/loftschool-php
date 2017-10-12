@@ -100,3 +100,31 @@ function task4($number1, $number2)
 
     echo "</tr></table>";
 }
+function task5($string)
+{
+    function utf8_strRev($str)
+    {
+        preg_match_all('/./us', $str, $ar);
+        return join('', array_reverse($ar[0]));
+    }
+
+    function palindrome($value)
+    {
+        if ($value) {
+            return "Введённая строка палиндром.";
+        } else {
+            return "Введённая строка не палиндром.";
+        }
+    }
+
+    $string = trim($string);
+    $string = mb_strtolower($string);
+    $string = str_replace(" ", "", $string);
+    $stringReverse = utf8_strRev($string);
+
+    if ($stringReverse == $string) {
+        echo palindrome(true);
+    } else {
+        echo palindrome(false);
+    }
+}
