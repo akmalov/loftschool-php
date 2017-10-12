@@ -62,3 +62,15 @@ function task2($array, $operation)
             break;
     }
 }
+function task3()
+{
+    $operation = func_get_arg(0);
+    if ($operation !== "+" && $operation !== "-" && $operation !== "*" && $operation !== "/") {
+        echo "Первым аргументом функции должен быть знак арифметического действия";
+        return null;
+    }
+    $arguments = func_get_args();
+    $array = array_splice($arguments, 1);
+    $num = task2($array, $operation);
+    return $num;
+}
