@@ -35,3 +35,10 @@ echo('Задание #7 <br>');
 task7("Карл у Клары украл Кораллы", "Две бутылки лимонада");
 
 echo "<br>";
+
+echo('Задание #8 <br>');
+task8("RX packets:950381 errors:0 dropped:0 overruns:0 frame:0.");
+echo "<br>";
+task8("RX packets:950381 errors:0 dropped:0 overruns:0 frame:)0.");
+
+echo "<br>";

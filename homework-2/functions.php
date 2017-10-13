@@ -140,3 +140,35 @@ function task7($string1, $string2)
     echo "<br>";
     echo str_replace("Две", "Три", $string2);
 }
+function smile()
+{
+    echo "<pre>
+              OOOOOOOOOOO
+         OOOOOOOOOOOOOOOOOOO
+      OOOOOO  OOOOOOOOO  OOOOOO
+    OOOOOO      OOOOO      OOOOOO
+  OOOOOOOO  #   OOOOO  #   OOOOOOOO
+ OOOOOOOOOO    OOOOOOO    OOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+OOOO  OOOOOOOOOOOOOOOOOOOOOOOOO  OOOO
+ OOOO  OOOOOOOOOOOOOOOOOOOOOOO  OOOO
+  OOOO   OOOOOOOOOOOOOOOOOOOO  OOOO
+    OOOOO   OOOOOOOOOOOOOOO   OOOO
+      OOOOOO   OOOOOOOOO   OOOOOO
+         OOOOOO         OOOOOO
+             OOOOOOOOOOOO
+              </pre>";
+}
+function task8($string)
+{
+    if (preg_match("/[:][)]/", $string, $matches)) {
+        smile();
+    } else {
+        preg_match("/packets:[0-9]+/", $string, $matches);
+        $pack = explode(":", $matches[0])[1];
+        if ($pack > 1000) {
+            echo "Сеть есть.";
+        }
+    }
+}
