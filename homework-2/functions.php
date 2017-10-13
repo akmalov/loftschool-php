@@ -172,3 +172,19 @@ function task8($string)
         }
     }
 }
+function task9($title, $string)
+{
+    try {
+        fopen($title, "w+");
+        echo "Файл $title создан.<br>";
+    } catch (Exception $e) {
+        echo "Произошла ошибка " . $e -> getMessage();
+    }
+
+    $file = fopen($title, "w+") or die("Не удалось открыть файл.");
+    fwrite($file, $string);
+    echo "Запись в файл $title произведена.<br>";
+    fclose($file);
+
+    echo file_get_contents($title);
+}

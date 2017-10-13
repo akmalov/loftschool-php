@@ -42,3 +42,8 @@ echo "<br>";
 task8("RX packets:950381 errors:0 dropped:0 overruns:0 frame:)0.");
 
 echo "<br>";
+
+echo('Задание #9 <br>');
+task9("test.txt", "Hello, world");
+
+echo "<br>";
