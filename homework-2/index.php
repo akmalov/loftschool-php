@@ -47,3 +47,8 @@ echo('Задание #9 <br>');
 task9("test.txt", "Hello, world");
 
 echo "<br>";
+
+echo('Задание #10 <br>');
+task10("anothertest.txt", "Hello again!");
+
+echo "<br>";
