@@ -53,6 +53,11 @@ function task2($array, $operation)
         case "/":
             $result = 1;
             foreach ($array as $num) {
+                if ($num == 0) {
+                    echo "Массив содержит ноль. Деление на ноль невозможно.";
+                    $result = null;
+                    break;
+                }
                 $result /= $num;
             }
             echo $result;
