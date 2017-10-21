@@ -25,6 +25,38 @@ function output($data, $parent = '')
     }
 }
 
+function task3()
+{
+    $table = [];
+    $rows = 5;
+    while ($rows--) {
+        $row = [];
+        $columns = 10;
+        while ($columns--) {
+            $row[] = rand(1, 100);
+        }
+        $table[] = $row;
+        echo implode(', ', $row), '<br>';
+    }
+    $fileName = 'data.csv';
+    $file = fopen($fileName, 'w');
+    foreach ($table as $row) {
+        fputcsv($file, $row);
+    }
+    fclose($file);
+    echo "Данные сохранены в файле \"$fileName\"<br>";
+    $file = fopen($fileName, 'r');
+    $amount = 0;
+    while ($row = fgetcsv($file)) {
+        foreach ($row as $value) {
+            if ($value % 2 === 0) {
+                $amount += $value;
+            }
+        }
+    }
+    echo "Сумма чётных чисел: $amount<br>";
+}
+
 function task4()
 {
     $curl = curl_init();
