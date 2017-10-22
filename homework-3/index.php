@@ -5,6 +5,11 @@ task1();
 
 echo "<br>";
 
+echo('Задание #2 <br>');
+task2();
+
+echo "<br>";
+
 echo('Задание #3 <br>');
 task3();
 

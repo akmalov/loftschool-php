@@ -1,0 +1,9 @@
+{
+    "brand": "BMW",
+    "model": "X5",
+    "characteristics": {
+        "speed": "235",
+        "acceleration": "6.5",
+        "consumption": 8.5
+    }
+}
