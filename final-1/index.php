@@ -247,7 +247,7 @@
         <section class="section menu">
           <div class="section__title section__title_white menu__title">Меню</div>
           <ul class="menu-acco">
-            <li class="menu-acco__item"><a class="menu-acco__trigger" href="#" style="background-image: url('../img/bg/menu/meats.jpg');">
+            <li class="menu-acco__item"><a class="menu-acco__trigger" href="#" style="background-image: url('img/bg/menu/meats.jpg');">
                 <div class="menu-acco__trigger-text">Для мясоедов</div></a>
               <div class="menu-acco__content">
                 <div class="menu-acco__text">
@@ -256,7 +256,7 @@
                 </div>
               </div>
             </li>
-            <li class="menu-acco__item"><a class="menu-acco__trigger" href="#" style="background-image: url('../img/bg/menu/vegans.jpg');">
+            <li class="menu-acco__item"><a class="menu-acco__trigger" href="#" style="background-image: url('img/bg/menu/vegans.jpg');">
                 <div class="menu-acco__trigger-text">Вегетарианское</div></a>
               <div class="menu-acco__content">
                 <div class="menu-acco__text">
@@ -265,7 +265,7 @@
                 </div>
               </div>
             </li>
-            <li class="menu-acco__item"><a class="menu-acco__trigger" href="#" style="background-image: url('../img/bg/menu/diets.jpg');">
+            <li class="menu-acco__item"><a class="menu-acco__trigger" href="#" style="background-image: url('img/bg/menu/diets.jpg');">
                 <div class="menu-acco__trigger-text">Диетическое</div></a>
               <div class="menu-acco__content">
                 <div class="menu-acco__text">
@@ -280,7 +280,7 @@
           <ul class="reviews__list">
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/1.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/1.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -290,7 +290,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/2.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/2.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -300,7 +300,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/3.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/3.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -310,7 +310,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/4.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/4.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -320,7 +320,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/5.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/5.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -330,7 +330,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/6.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/6.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -340,7 +340,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/7.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/7.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -350,7 +350,7 @@
             </li>
             <li class="reviews__item">
               <div class="review">
-                <div class="review__photo" style="background-image: url('../img/content/reviews/8.jpg');"></div>
+                <div class="review__photo" style="background-image: url('img/content/reviews/8.jpg');"></div>
                 <div class="review__hover">
                   <div class="review__title">Константин Спилберг</div>
                   <div class="review__shorttext">Мысли все о них и о них, о них и о них. Нельзя устоять, невозможно забыть... Никогда не думал, что булочки могут быть такими мягкими, котлетка такой сочной, а сыр таким расплавленным.</div>
@@ -364,7 +364,7 @@
           <div class="container">
             <div class="section__title">Закажите доставку</div>
             <div class="order__form">
-              <form class="order__form-tag" id="order-form" action="javascript:void(0);" onsubmit="send()">
+              <form class="order__form-tag" id="order-form" action="php/order-form.php" method="POST" enctype="multipart/form-data">
                 <div class="order__form-col">
                   <div class="order__form-row order__form-row_double">
                     <label class="order__form-block">
@@ -498,8 +498,9 @@
         <div class="status-popup__message error-message">Произошла ошибка</div><a class="status-popup__close btn" href="#">Закрыть</a>
       </div>
     </div>
-    <script src="./js/vendors.min.js"></script>
+    <script src="js/vendors.min.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script src="./js/main.min.js"></script>
+    <script src="js/main.min.js"></script>
+    <script src="js/order-form.js"></script>
   </body>
 </html>
