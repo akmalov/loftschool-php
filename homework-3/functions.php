@@ -3,25 +3,31 @@
 function task1()
 {
     $data = json_decode(json_encode(simplexml_load_file('data.xml')), true);
+    echo "<table width=60% border=\"1px solid black\" cellspacing=\"0\" cellpadding=\"0\">";
     output($data);
+    echo "</table>";
 }
 
 function output($data, $parent = '')
 {
     if (is_array($data)) {
         if (count($data) == 1 && $parent != '@attributes') {
-            echo "$parent:<br>";
+            echo "<tr><td>$parent</td><td></td></tr>";
+            echo "<tr><td></td><td></td></tr>";
         }
         foreach ($data as $key => $value) {
             if (is_numeric($key)) {
-                echo "$parent:<br>";
+                echo "<tr><td>$parent</td>";
+                echo "<td>";
+                echo "<tr><td></td><td></td></tr>";
                 output($value, $parent);
+                echo "</td></tr>";
             } else {
                 output($value, $key);
             }
         }
     } else {
-        echo "$parent: $data<br>";
+        echo "<tr><td>$parent</td><td>$data</td></tr>";
     }
 }
 
