@@ -22,17 +22,36 @@ if (count($users) === 0) {
         $_POST['phone']
     ];
     $query =
-        'INSERT INTO users (email, name, phone)' .
-        'VALUES(?, ?, ?)';
+        'INSERT INTO users (email, name, phone) VALUES(?, ?, ?)';
     $stmt = $db->prepare($query);
     $stmt->execute($values);
     $user_id = $db->lastInsertId();
-    echo json_encode(array(
-        'status' => true
-    ));
 } else {
     $user_id = $users[0]['id'];
-    echo json_encode(array(
-        'status' => true
-    ));
 }
+
+// Phase 2 - ordering //
+$address = "улица {$_POST['street']}, дом {$_POST['home']}";
+if ($_POST['part'] !== '') {
+    $address .= ", корпус {$_POST['part']}";
+}
+if ($_POST['appt'] !== '') {
+    $address .= ", кв. {$_POST['appt']}";
+}
+if ($_POST['floor'] !== '') {
+    $address .= ", этаж {$_POST['floor']}";
+}
+$user_id = intval($user_id);
+$values = [
+    $user_id,
+    $address,
+    $_POST['comment'],
+    $_POST['payment'],
+    $_POST['callback'] === 'on' ? 1 : 0
+];
+$query = 'INSERT INTO orders (user_id, address, comment, payment_method, callback) VALUES(?, ?, ?, ?, ?)';
+$stmt = $db->prepare($query);
+$stmt->execute($values);
+echo json_encode(array(
+    'status' => true
+));
