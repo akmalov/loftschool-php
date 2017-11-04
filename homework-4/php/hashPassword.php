@@ -1,5 +1,5 @@
 <?php
 function hashPassword($s)
 {
-    return password_hash($s, PASSWORD_DEFAULT);
+    return crypt($s, CRYPT_STD_DES);
 }

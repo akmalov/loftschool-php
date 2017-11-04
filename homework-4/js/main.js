@@ -28,7 +28,7 @@ function authorization() {
     url: './php/authorization.php',
     processData: false,
     contentType: false,
-    data: fd,
+    data: formData,
     success: function (data) {
       alert(data);
     }

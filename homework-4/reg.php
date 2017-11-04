@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Регистрация</title>
+    <title>Домашнее задание №4 - регистрация</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,14 +36,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Домашнее задание №4</a>
+          <a class="navbar-brand" href="index.php">Домашнее задание №4</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Авторизация</a></li>
-            <li class="active"><a href="reg.html">Регистрация</a></li>
-            <li><a href="list.html">Список пользователей</a></li>
-            <li><a href="filelist.html">Список файлов</a></li>
+            <li><a href="index.php">Авторизация</a></li>
+            <li class="active"><a href="reg.php">Регистрация</a></li>
+            <li><a href="list.php">Список пользователей</a></li>
+            <li><a href="filelist.php">Список файлов</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -56,31 +56,31 @@
           <div class="form-group">
             <label for="registration-login" class="col-sm-2 control-label">Логин</label>
             <div class="col-sm-10">
-              <input name="login" class="form-control" id="registration-login" placeholder="Логин">
+              <input name="login" class="form-control" id="registration-login" placeholder="Логин" required>
             </div>
           </div>
           <div class="form-group">
             <label for="registration-password" class="col-sm-2 control-label">Пароль</label>
             <div class="col-sm-10">
-              <input name="password" type="password" class="form-control" id="registration-password" placeholder="Пароль">
+              <input name="password" type="password" class="form-control" id="registration-password" placeholder="Пароль" required>
             </div>
           </div>
           <div class="form-group">
             <label for="registration-password-repeat" class="col-sm-2 control-label">Пароль (Повтор)</label>
             <div class="col-sm-10">
-              <input name="password-repeat" type="password" class="form-control" id="registration-password-repeat" placeholder="Пароль (Повтор)">
+              <input name="password-repeat" type="password" class="form-control" id="registration-password-repeat" placeholder="Пароль (Повтор)" required>
             </div>
           </div>
           <div class="form-group">
             <label for="registration-name" class="col-sm-2 control-label">Имя</label>
             <div class="col-sm-10">
-              <input name="name" class="form-control" id="registration-name" placeholder="Имя">
+              <input name="name" class="form-control" id="registration-name" placeholder="Имя" required>
             </div>
           </div>
           <div class="form-group">
-            <label for="registration-age" class="col-sm-2 control-label">Возраст</label>
+            <label for="registration-age" class="col-sm-2 control-label">Дата рождения</label>
             <div class="col-sm-10">
-              <input name="age" class="form-control" id="registration-age" placeholder="Возраст">
+              <input name="age" class="form-control" id="registration-age" placeholder="Дата рождения">
             </div>
           </div>
           <div class="form-group">
@@ -99,7 +99,7 @@
             <div class="col-sm-offset-2 col-sm-10">
               <button class="btn btn-default">Зарегистрироваться</button>
               <br><br>
-              Зарегистрированы? <a href="index.html">Авторизируйтесь</a>
+              Зарегистрированы? <a href="index.php">Авторизируйтесь</a>
             </div>
           </div>
         </form>

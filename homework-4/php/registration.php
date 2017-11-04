@@ -15,11 +15,17 @@ if ($_POST['password'] !== $_POST['password-repeat']) {
     die;
 }
 $image = validationImage($_FILES['photo'], $extension);
+if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", strip_tags($_POST['age']))) {
+    echo 'Дата рождения введена неверно. Введите дату в формате 2000-12-31';
+    return false;
+}
+$date = new DateTime(strip_tags($_POST['age']));
+$dateValue = $date->format('Y-m-d');
 $values = [
     strip_tags($_POST['login']),
-    hashPassword($_POST['password']),
+    hashPassword(strip_tags($_POST['password'])),
     strip_tags($_POST['name']),
-    filter_var($_POST['age'], FILTER_VALIDATE_INT),
+    $dateValue,
     htmlspecialchars($_POST['description'])
 ];
 $query = '
@@ -27,7 +33,8 @@ INSERT INTO users
 (login, password, name, age, description)
 VALUES(?, ?, ?, ?, ?)';
 $stmt = $db->prepare($query);
-$stmt->execute($values);
+$result = $stmt->execute($values);
+
 if ($image) {
     $lastUserId = $db->lastInsertId();
     $filename = "$lastUserId.$extension";
@@ -37,4 +44,8 @@ if ($image) {
     $db->query($query);
     move_uploaded_file($tmp_name, $path);
 }
-echo 'Регистрация прошла успешно';
+if ($result) {
+    echo 'Регистрация прошла успешно';
+} else {
+    echo 'Произошла ошибка';
+}
