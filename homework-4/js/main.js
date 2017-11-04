@@ -18,3 +18,19 @@ function submitRegistration() {
     }
   });
 }
+
+function authorization() {
+  var formData = new FormData;
+  formData.append('login', $('#authorization-login').val());
+  formData.append('password', $('#authorization-password').val());
+  $.ajax({
+    type: 'POST',
+    url: './php/authorization.php',
+    processData: false,
+    contentType: false,
+    data: fd,
+    success: function (data) {
+      alert(data);
+    }
+  });
+}
