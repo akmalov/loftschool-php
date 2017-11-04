@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,22 +50,38 @@
       </div>
     </nav>
 
-    <div class="container">
-    <h1>Запретная зона, доступ только авторизированному пользователю</h1>
-      <h2>Информация выводится из списка файлов</h2>
+    <div class="container" style="padding-top: 100px;">
+        <?php
+        if ($_SESSION['access'] !== 'granted') {
+            echo "Авторизуйтесь, чтобы получить доступ к этой странице";
+            die;
+        }
+        ?>
       <table class="table table-bordered">
         <tr>
           <th>Название файла</th>
           <th>Фотография</th>
           <th>Действия</th>
         </tr>
-        <tr>
-          <td>1.jpg</td>
-          <td><img src="http://lorempixel.com/people/200/200/" alt=""></td>
-          <td>
-            <a href="">Удалить аватарку пользователя</a>
-          </td>
-        </tr>
+            <?php
+            require './php/config.php';
+            $db = new PDO(DB, DB_USER, DB_PASSWORD);
+            $sql = 'SELECT photo FROM users WHERE photo IS NOT NULL';
+            $result = $db->query($sql);
+            $data = $result->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($data as $array) {
+                echo '<tr>';
+                foreach ($array as $key => $value) {
+                    echo "<td>$value</td>";
+                    echo "<td><img src=\"./photos/$value\" . height=\"150\"></td>";
+                    echo "<td>
+                         <a href=\"./php/deleteImage.php?delete=$value\">Удалить аватарку пользователя</a>
+                         </td>";
+                    continue;
+                }
+                echo '</tr>';
+            }
+            ?>
       </table>
 
     </div><!-- /.container -->

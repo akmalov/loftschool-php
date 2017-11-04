@@ -99,11 +99,11 @@
                         echo "<td>
                          <a href=\"./php/deleteUser.php?delete=$id\">Удалить пользователя</a>
                          </td>";
-                        echo '</tr>';
                         continue;
                     }
                     echo "<td>$value</td>";
                 }
+                echo '</tr>';
             }
             ?>
       </table>
