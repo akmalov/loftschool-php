@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Регистрация</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,12 +36,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Домашнее задание №4</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Авторизация</a></li>
-            <li><a href="reg.html">Регистрация</a></li>
+            <li><a href="index.html">Авторизация</a></li>
+            <li class="active"><a href="reg.html">Регистрация</a></li>
             <li><a href="list.html">Список пользователей</a></li>
             <li><a href="filelist.html">Список файлов</a></li>
           </ul>
@@ -52,28 +52,52 @@
     <div class="container">
 
       <div class="form-container">
-        <form class="form-horizontal" action="">
+        <form class="form-horizontal" id="registration-form" enctype="multipart/form-data" action="javascript:void(0);" onsubmit="submitRegistration()">
           <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">Логин</label>
+            <label for="registration-login" class="col-sm-2 control-label">Логин</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputEmail3" placeholder="Логин">
+              <input name="login" class="form-control" id="registration-login" placeholder="Логин">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">Пароль</label>
+            <label for="registration-password" class="col-sm-2 control-label">Пароль</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword3" placeholder="Пароль">
+              <input name="password" type="password" class="form-control" id="registration-password" placeholder="Пароль">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputPassword4" class="col-sm-2 control-label">Пароль (Повтор)</label>
+            <label for="registration-password-repeat" class="col-sm-2 control-label">Пароль (Повтор)</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Пароль">
+              <input name="password-repeat" type="password" class="form-control" id="registration-password-repeat" placeholder="Пароль (Повтор)">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registration-name" class="col-sm-2 control-label">Имя</label>
+            <div class="col-sm-10">
+              <input name="name" class="form-control" id="registration-name" placeholder="Имя">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registration-age" class="col-sm-2 control-label">Возраст</label>
+            <div class="col-sm-10">
+              <input name="age" class="form-control" id="registration-age" placeholder="Возраст">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registration-description" class="col-sm-2 control-label">Описание</label>
+            <div class="col-sm-10">
+              <textarea name="description" class="form-control" id="registration-description" placeholder="О себе"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registration-photo" class="col-sm-2 control-label">Фото</label>
+            <div class="col-sm-10">
+              <input name="photo" type="file" id="registration-photo" class="form-control" placeholder="Загрузить фото">
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Зарегистрироваться</button>
+              <button class="btn btn-default">Зарегистрироваться</button>
               <br><br>
               Зарегистрированы? <a href="index.html">Авторизируйтесь</a>
             </div>
@@ -87,7 +111,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/bootstrap.min.js"></script>
 

@@ -1,27 +1,20 @@
-/**
- * Created by arku on 07.03.2017.
- */
-console.log('Hello, World')
-var selector = "div.starter-template>h1";
-
-var zagolovok = $(selector);
-var zagovol_data = zagolovok.html()
-zagolovok.html('ahaha')
-
-console.log(zagovol_data);
-
-$('#returnback').on('click', function(){
-    // zagolovok.html(zagovol_data)
-
-    $.ajax({
-        url: '/data.php',
-        method: 'post',
-        data: {
-            superdata: zagovol_data //$_POST['superdata']
-        }
-    }).done(function (data) {
-        var json = JSON.parse(data);  //JSON.stringify()
-        var str = json.name + ' - ' + json.occupation + json.superdata;
-        zagolovok.html(str)
-    });
-})
+function submitRegistration() {
+  var formData = new FormData();
+  formData.append('login', $("#registration-login").val());
+  formData.append('password', $("#registration-password").val());
+  formData.append('password-repeat', $("#registration-password-repeat").val());
+  formData.append('name', $("#registration-name").val());
+  formData.append('age', $("#registration-age").val());
+  formData.append('description', $("#registration-description").val());
+  formData.append('photo', $("#registration-photo").prop('files')[0]);
+  $.ajax({
+    type: 'POST',
+    url: './php/registration.php',
+    processData: false,
+    contentType: false,
+    data: formData,
+    success: function (data) {
+      alert(data);
+    }
+  });
+}
