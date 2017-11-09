@@ -1,5 +1,5 @@
 <?php
 function hashPassword($s)
 {
-    return crypt($s, CRYPT_STD_DES);
+    return password_hash($s, PASSWORD_BCRYPT, ['salt' => '@KF#MRO5VLfCJx?{G54#Mqk{tr9']);
 }
