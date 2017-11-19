@@ -1,6 +1,7 @@
 <?php
 // configuration //
 require 'config.php';
+require_once '../vendor/autoload.php';
 $db = new PDO(DB, DB_USER, DB_PASSWORD);
 
 // Phase 1 - users' registration and authorization //
@@ -56,16 +57,17 @@ $stmt->execute($values);
 // Phase 3 - dispatch letter //
 $result = $db->query("SELECT COUNT(*) FROM orders WHERE user_id = $user_id");
 $count = $result->fetch(PDO::FETCH_NUM)[0];
-$message = "<h1>Заказ №$count</h1>
-<p>Ваш заказ будет доставлен по адресу:</p>
-<p>$address</p>
-<p>DarkBeefBurger за 500 рублей, 1 шт</p><br>";
+$count = $count + 1;
+$message = "<h1>Заказ №$count</h1><br>
+Ваш заказ будет доставлен по адресу:<br>
+$address<br>
+DarkBeefBurger за 500 рублей, 1 шт<br>";
 if ($count < 2) {
     $message .= "<p>Спасибо - это ваш первый заказ</p>";
 } else {
     $message .= "<p>Спасибо! Это уже $count заказ</p>";
 }
-mail($email, "Заказ №$count", $message);
+include 'mail-forward.php';
 echo json_encode(array(
     'status' => true
 ));
