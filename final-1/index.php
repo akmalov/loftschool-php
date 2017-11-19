@@ -8,6 +8,7 @@
     </title>
     <link rel="stylesheet" href="./css/vendors.min.css">
     <link rel="stylesheet" href="./css/main.min.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>
   <body>
     <div class="wrapper">
@@ -437,6 +438,7 @@
                       <input class="order__form-button order__form-button_reset" name="" type="reset" value="Очистить">
                     </div>
                   </div>
+                  <div class="g-recaptcha" data-sitekey="6LfLeTkUAAAAAPGbcdqVlTgkbGlRre2plDhJ_4_T"></div>
                 </div>
               </form>
             </div>

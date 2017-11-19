@@ -10,7 +10,7 @@ $('#order-form').on('submit', function(e){
     type: 'POST',
     data: formData,
     success: function (data) {
-      var popup = data ? '#success' : '#error';
+      var popup = (data.status === true) ? '#success' : '#error';
       $.fancybox.open([
         {href: popup}
       ], {

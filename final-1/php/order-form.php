@@ -2,6 +2,18 @@
 // configuration //
 require 'config.php';
 require_once '../vendor/autoload.php';
+$remoteIp = $_SERVER['REMOTE_ADDR'];
+$gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
+$recaptcha = new \ReCaptcha\ReCaptcha('6Le4Xi4UAAAAAIDgujIdBshZIjjkVnHEYZaQ9-SD');
+$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+if (!$resp->isSuccess()) {
+    echo 'Неудача';
+    echo json_encode(array(
+        'status' => false
+    ));
+    die;
+}
+
 $db = new PDO(DB, DB_USER, DB_PASSWORD);
 
 // Phase 1 - users' registration and authorization //
