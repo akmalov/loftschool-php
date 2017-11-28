@@ -1,0 +1,6 @@
+{
+    "require": {
+        "illuminate/support": "^5.5",
+        "erdiko/eloquent": "^1.0"
+    }
+}
