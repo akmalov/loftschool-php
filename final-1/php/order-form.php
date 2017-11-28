@@ -1,46 +1,119 @@
 <?php
+
 // configuration //
-require 'config.php';
+
 require_once '../vendor/autoload.php';
-$remoteIp = $_SERVER['REMOTE_ADDR'];
-$gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
-$recaptcha = new \ReCaptcha\ReCaptcha('6Le4Xi4UAAAAAIDgujIdBshZIjjkVnHEYZaQ9-SD');
-$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
-if (!$resp->isSuccess()) {
-    echo 'Неудача';
-    echo json_encode(array(
-        'status' => false
-    ));
-    die;
+require 'bootstrap.php';
+require_once 'validationImage.php';
+
+use Intervention\Image\ImageManager;
+use Illuminate\Database\Eloquent\Model as Model;
+
+class User extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+
+    protected $fillable = [
+        'id', 'email', 'name', 'phone', 'ip', 'photo'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+
+    protected $hidden = [
+    ];
+
+    public function orders()
+    {
+        return $this->hasMany('Order');
+    }
 }
 
-$db = new PDO(DB, DB_USER, DB_PASSWORD);
+class Order extends Model
+
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+
+    protected $fillable = [
+        'id', 'user_id', 'address', 'comment', 'payment_method', 'callback'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+
+    protected $hidden = [
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+}
+
+//$remoteIp = $_SERVER['REMOTE_ADDR'];
+//$gRecaptchaResponse = $_REQUEST['g-recaptcha-response'];
+//$recaptcha = new \ReCaptcha\ReCaptcha('6Le4Xi4UAAAAAIDgujIdBshZIjjkVnHEYZaQ9-SD');
+//$resp = $recaptcha->verify($gRecaptchaResponse, $remoteIp);
+//if (!$resp->isSuccess()) {
+//    echo 'Неудача';
+//    echo json_encode(array(
+//        'status' => false
+//    ));
+//    die;
+//}
 
 // Phase 1 - users' registration and authorization //
 $email = trim(strtolower($_POST['email']));
 $name = trim(strtolower($_POST['name']));
 $phone = trim(strtolower($_POST['phone']));
+$IP = $_SERVER['REMOTE_ADDR'];
+if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
+    $IP = array_pop(explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
+}
+
+$uploadedImage = validationImage($_FILES['photo'], $extension);
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     return null;
 }
 
-$usersQuery = "SELECT * FROM users WHERE email = ?";
-$stmt = $db->prepare($usersQuery);
-$stmt->execute([$email]);
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-if (count($users) === 0) {
-    $values = [
-        $_POST['email'],
-        $_POST['name'],
-        $_POST['phone']
-    ];
-    $query =
-        'INSERT INTO users (email, name, phone) VALUES(?, ?, ?)';
-    $stmt = $db->prepare($query);
-    $stmt->execute($values);
-    $user_id = $db->lastInsertId();
+$user = User::with('orders')->where('email', '=', $email)->first();
+
+if (!$user) {
+    $user = new User();
+    $user->email = $email;
+    $user->name = $name;
+    $user->phone = $phone;
+    $user->ip = $IP;
+    $user->save();
+    $user_id = $user->id;
+    if ($uploadedImage) {
+        $filename = "$user_id.$extension";
+        $path = '../photos/' . $filename;
+        $tmp_name = $_FILES['photo']['tmp_name'];
+        $user->photo=$filename;
+        move_uploaded_file($tmp_name, $path);
+        $manager = new ImageManager();
+        $image = $manager->make($path)->resize(480, 480);
+        $image->save();
+        $user->save();
+    }
 } else {
-    $user_id = $users[0]['id'];
+    $user_id = $user->id;
 }
 
 // Phase 2 - ordering //
@@ -54,31 +127,29 @@ if ($_POST['appt'] !== '') {
 if ($_POST['floor'] !== '') {
     $address .= ", этаж {$_POST['floor']}";
 }
-$user_id = intval($user_id);
-$values = [
-    $user_id,
-    $address,
-    $_POST['comment'],
-    $_POST['payment'],
-    $_POST['callback'] === 'on' ? 1 : 0
-];
-$query = 'INSERT INTO orders (user_id, address, comment, payment_method, callback) VALUES(?, ?, ?, ?, ?)';
-$stmt = $db->prepare($query);
-$stmt->execute($values);
+
+$order = new Order();
+$order->user_id = $user_id;
+$order->address = $address;
+$order->comment = $_POST['comment'];
+$order->payment_method = $_POST['payment'];
+$callback = ($_POST['callback'] === 'on' ? 1 : 0);
+$order->callback = $callback;
+$order->save();
 
 // Phase 3 - dispatch letter //
-$result = $db->query("SELECT COUNT(*) FROM orders WHERE user_id = $user_id");
-$count = $result->fetch(PDO::FETCH_NUM)[0];
-$count = $count + 1;
-$message = "<h1>Заказ №$count</h1><br>
+$result = Order::where('user_id', '=', $user_id)->count();
+
+$message = "<h1>Заказ №$result</h1><br>
 Ваш заказ будет доставлен по адресу:<br>
 $address<br>
 DarkBeefBurger за 500 рублей, 1 шт<br>";
-if ($count < 2) {
+if ($result < 2) {
     $message .= "<p>Спасибо - это ваш первый заказ</p>";
 } else {
-    $message .= "<p>Спасибо! Это уже $count заказ</p>";
+    $message .= "<p>Спасибо! Это уже $result заказ</p>";
 }
+
 include 'mail-forward.php';
 echo json_encode(array(
     'status' => true
