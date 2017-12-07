@@ -1,6 +1,7 @@
 {
     "require": {
         "illuminate/support": "^5.5",
-        "erdiko/eloquent": "^1.0"
+        "erdiko/eloquent": "^1.0",
+        "fzaninotto/faker": "^1.7"
     }
 }

@@ -1,19 +1,17 @@
-<?php
-require "config.php";
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+      <meta charset="UTF-8">
+      <title>Домашнее задание №8. Задача №1</title>
+  </head>
+  <body>
 
-use Illuminate\Database\Capsule\Manager as Capsule;
+  <button type="submit" id="get">Показать все товары</button>
+  <button type="submit" id="create">Создать</button>
 
-Capsule::schema()->create('categories', function ($table) {
-    $table->increments('id');
-    $table->string('name');
-    $table->text('description');
-});
+  <div id="goods"></div>
 
-Capsule::schema()->create('goods', function ($table) {
-    $table->increments('id');
-    $table->smallInteger('category_id');
-    $table->string('name');
-    $table->float('price');
-    $table->string('photo')->nullable();
-    $table->text('description')->nullable();
-});
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/main.js"></script>
+  </body>
+</html>
